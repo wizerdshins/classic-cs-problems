@@ -2,7 +2,6 @@ package com.wizerdshins.chapterone;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Arrays;
 
 public class UnbreakableEncryption {
 
@@ -10,7 +9,7 @@ public class UnbreakableEncryption {
     one-time pad encryption
      */
 
-    private static String source = "Encode me!";
+    private static String SOURCE = "Encode me!";
 
     private byte[] getKey(String str) {
 
@@ -22,21 +21,18 @@ public class UnbreakableEncryption {
             e.printStackTrace();
         }
 
-        System.out.println("Key in getKey(): " + Arrays.toString(key));
         return key;
     }
 
     private byte[] encode(String str, byte[] key) {
 
         byte[] sourceSequence = str.getBytes();
-        System.out.println("Source in encode(): " + Arrays.toString(sourceSequence));
-        System.out.println("Key in encode(): " + Arrays.toString(key));
 
         byte[] encodedMessage = new byte[sourceSequence.length];
         for (int i = 0; i < sourceSequence.length; i++) {
             encodedMessage[i] = (byte)(sourceSequence[i] ^ key[i]);
         }
-        System.out.println("Encode in encode(): " + Arrays.toString(encodedMessage));
+
         return encodedMessage;
     }
 
@@ -54,11 +50,12 @@ public class UnbreakableEncryption {
         return decodedMessage;
     }
 
-    private String getEncodingWithOneTimePadCipher(String source) {
+    private String getEncodingWithOneTimePadCipher(String SOURCE) {
 
-        byte[] key = getKey(source);
-        byte[] encode = encode(source, key);
+        byte[] key = getKey(SOURCE);
+        byte[] encode = encode(SOURCE, key);
         byte[] decode = decode(encode, key);
+
         return new String(decode);
     }
 
