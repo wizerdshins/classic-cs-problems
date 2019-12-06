@@ -27,7 +27,7 @@ public class CalculatingPi {
     }
 
     /**
-     * Madhava–Leibniz's formula
+     * Madhava–Leibniz formula
      */
 
     private double getPiUsingClassicFormula(int count) {
@@ -40,7 +40,7 @@ public class CalculatingPi {
     }
 
     /**
-     * John Machin's formula:
+     * John Machin formula:
      * Pi/4 = 4arctg1/5 - arctg1/239
      */
 
