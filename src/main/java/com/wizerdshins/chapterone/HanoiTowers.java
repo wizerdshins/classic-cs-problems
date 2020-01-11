@@ -58,20 +58,20 @@ public class HanoiTowers {
 
     /**
      * classic recursive algorithm
-     * @param number start tower size
+     * @param number start tower's size
      */
 
-    private void moveWithRecursion(ArrayDeque<Character> begin,
-                                  ArrayDeque<Character> end,
-                                  ArrayDeque<Character> temp,
-                                  int number) {
+    private void moveWithRecursion(ArrayDeque<Character> from,
+                                   ArrayDeque<Character> to,
+                                   ArrayDeque<Character> temp,
+                                   int number) {
 
         if (number == 1) {
-            end.addFirst(begin.removeFirst());
+            to.addFirst(from.removeFirst());
         } else {
-            moveWithRecursion(begin, temp, end, number - 1);
-            moveWithRecursion(begin, end, temp, 1);
-            moveWithRecursion(temp, end, begin, number - 1);
+            moveWithRecursion(from, temp, to, number - 1);
+            moveWithRecursion(from, to, temp, 1);
+            moveWithRecursion(temp, to, from, number - 1);
         }
     }
 
